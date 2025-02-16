@@ -1,0 +1,71 @@
+{
+	"compiler": {
+		"version": "0.8.26+commit.8a97fa7a"
+	},
+	"language": "Solidity",
+	"output": {
+		"abi": [
+			{
+				"anonymous": false,
+				"inputs": [
+					{
+						"indexed": true,
+						"internalType": "address",
+						"name": "customer",
+						"type": "address"
+					},
+					{
+						"indexed": false,
+						"internalType": "uint256",
+						"name": "tripIndex",
+						"type": "uint256"
+					},
+					{
+						"indexed": false,
+						"internalType": "uint256",
+						"name": "amount",
+						"type": "uint256"
+					}
+				],
+				"name": "TripBooked",
+				"type": "event"
+			}
+		],
+		"devdoc": {
+			"kind": "dev",
+			"methods": {},
+			"version": 1
+		},
+		"userdoc": {
+			"kind": "user",
+			"methods": {},
+			"version": 1
+		}
+	},
+	"settings": {
+		"compilationTarget": {
+			"contracts/TripManager.sol": "TravelLibrary"
+		},
+		"evmVersion": "cancun",
+		"libraries": {},
+		"metadata": {
+			"bytecodeHash": "ipfs"
+		},
+		"optimizer": {
+			"enabled": false,
+			"runs": 200
+		},
+		"remappings": []
+	},
+	"sources": {
+		"contracts/TripManager.sol": {
+			"keccak256": "0x008923987d48d9f987da016da3782841902a4d3c2a573ae2ef88622de87c8c09",
+			"license": "MIT",
+			"urls": [
+				"bzz-raw://2e2256786baaf14ab26fa932d75e72f626f0914441cb1c706d6ee6c862caf4e3",
+				"dweb:/ipfs/QmPEpgkR7FX7buF6XXqw5UfRtQW9Cnx6i6fLZzSi8cmSpu"
+			]
+		}
+	},
+	"version": 1
+}

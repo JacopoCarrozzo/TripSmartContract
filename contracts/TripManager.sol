@@ -36,7 +36,7 @@ contract TripManager {
     event FundsWithdrawn(address indexed provider, uint256 amount);
 
     modifier onlyOwner() {
-        require(msg.sender == owner, "Solo l'owner puo' eseguire questa operazione");
+        require(msg.sender == owner, "Only the owner can perform this operation");
         _;
     }
 
@@ -51,7 +51,7 @@ contract TripManager {
         uint256 endDate,
         uint256 price
     ) public onlyOwner {
-        require(startDate < endDate, "Le date non sono valide");
+        require(startDate < endDate, "The dates are not valid");
 
         tripStorage.trips.push(TravelLibrary.Trip(name, location, startDate, endDate, price, msg.sender));
         emit TravelLibrary.TripAdded(tripStorage.trips.length - 1, name, location, startDate, endDate, price, msg.sender);
@@ -62,9 +62,9 @@ contract TripManager {
     }
 
     function bookTrip(uint256 tripIndex) public payable {
-        require(tripIndex < tripStorage.trips.length, "Viaggio non esistente");
-        require(!bookedTrips[msg.sender][tripIndex], "Viaggio gia' prenotato");
-        require(msg.value == tripStorage.trips[tripIndex].price, "Importo errato");
+        require(tripIndex < tripStorage.trips.length, "Non-existent trip");
+        require(!bookedTrips[msg.sender][tripIndex], "Trip already booked");
+        require(msg.value == tripStorage.trips[tripIndex].price, "Incorrect amount");
 
         customerBalances[msg.sender] += msg.value;
         activeBookings[msg.sender] = true;
@@ -73,9 +73,9 @@ contract TripManager {
     }
 
     function completeTrip(address provider, uint256 tripIndex) public {
-        require(activeBookings[msg.sender], "Nessuna prenotazione attiva");
-        require(bookedTrips[msg.sender][tripIndex], "Viaggio non prenotato");
-        require(block.timestamp > tripStorage.trips[tripIndex].endDate, "Viaggio non ancora terminato");
+        require(activeBookings[msg.sender], "No active reservations");
+        require(bookedTrips[msg.sender][tripIndex], "Trip not booked");
+        require(block.timestamp > tripStorage.trips[tripIndex].endDate, "Journey not yet finished");
 
         uint256 amount = customerBalances[msg.sender];
         customerBalances[msg.sender] = 0;
@@ -87,9 +87,9 @@ contract TripManager {
     }
 
     function cancelBooking(uint256 tripIndex) public {
-        require(activeBookings[msg.sender], "Nessuna prenotazione attiva");
-        require(bookedTrips[msg.sender][tripIndex], "Viaggio non prenotato");
-        require(block.timestamp < tripStorage.trips[tripIndex].startDate, "Viaggio gia' iniziato");
+        require(activeBookings[msg.sender], "No active reservations");
+        require(bookedTrips[msg.sender][tripIndex], "Trip not booked");
+        require(block.timestamp < tripStorage.trips[tripIndex].startDate, "Journey already begun");
 
         uint256 refundAmount = customerBalances[msg.sender];
         customerBalances[msg.sender] = 0;
@@ -109,7 +109,7 @@ contract TripManager {
     }
 
     function withdrawFunds(uint256 amount) public {
-        require(providerBalances[msg.sender] >= amount, "Fondi insufficienti");
+        require(providerBalances[msg.sender] >= amount, "Insufficient funds");
 
         providerBalances[msg.sender] -= amount;
         payable(msg.sender).transfer(amount);

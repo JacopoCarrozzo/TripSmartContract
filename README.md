@@ -1,22 +1,22 @@
 # TripManager Smart Contract
 
-## Descrizione  
-TripManager è uno smart contract scritto in Solidity per gestire la prenotazione di viaggi senza intermediari. Il contratto permette ai clienti di prenotare viaggi, gestire i pagamenti in modo sicuro e garantire il trasferimento dei fondi ai fornitori di servizi turistici al completamento del viaggio.  
+## Description
+TripManager is a smart contract written in Solidity to manage the booking of travel without intermediaries. The contract allows customers to book trips, securely manage payments, and ensure the transfer of funds to travel service providers upon completion of the trip.
 
-## Funzionalità  
-- **Prenotazione di un viaggio**: I clienti possono prenotare un viaggio pagando l'importo richiesto.  
-- **Completamento del viaggio**: I fornitori ricevono il pagamento una volta completato il viaggio.  
-- **Annullamento della prenotazione**: I clienti possono annullare la prenotazione e ottenere un rimborso.  
-- **Gestione dei saldi**: È possibile visualizzare il saldo dei clienti e dei fornitori.  
-- **Prelievo dei fondi**: I fornitori possono prelevare i propri fondi guadagnati.  
+## Features
+- **Booking a trip**: Customers can book a trip by paying the requested amount.
+- **Completing the trip**: Suppliers receive payment upon completion of the trip.
+- **Cancellation of the booking**: Customers can cancel the booking and get a refund.
+- **Managing balances**: You can view the balance of customers and suppliers.
+- **Withdrawing funds**: Suppliers can withdraw their earned funds.
 
-## Struttura del Codice  
-- **`TravelLibrary`**: Libreria per la gestione della struttura dei viaggi.  
-- **`TripManager`**: Contratto principale che utilizza `TravelLibrary` per gestire le prenotazioni.  
+## Code Structure
+- **`TravelLibrary`**: Library for managing the travel structure.
+- **`TripManager`**: Main contract that uses `TravelLibrary` to manage reservations.
 
-## Installazione  
-1. Assicurarsi di avere un ambiente di sviluppo Solidity (Remix, Hardhat, Foundry, o Truffle).  
-2. Compilare e distribuire il contratto su una blockchain compatibile con Ethereum.  
+## Installation
+1. Make sure you have a Solidity development environment (Remix, Hardhat, Foundry, or Truffle).
+2. Compile and deploy the contract on an Ethereum-compatible blockchain.
 
-## Licenza  
-Questo progetto è distribuito sotto la licenza MIT.  
+## License
+This project is licensed under the MIT license.
